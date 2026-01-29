@@ -1,0 +1,292 @@
+/* =========================
+   RESET & BASE
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #ffffff;
+    color: #111827;
+    line-height: 1.6;
+}
+
+/* =========================
+   LINKS (APPLE STYLE)
+========================= */
+a {
+    color: #2563eb;
+    text-decoration: none;
+    position: relative;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #2563eb;
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero {
+    padding: 80px 20px 70px;
+    text-align: center;
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f8fafc 100%
+    );
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* =========================
+   NAME FALL ANIMATION (ONLY NAME)
+========================= */
+
+/* =========================
+   NAME DROP ANIMATION (FINAL)
+========================= */
+
+.name-animate {
+    display: inline-block;
+    animation: nameDrop 1.2s ease-out forwards;
+}
+
+/* Keyframes */
+@keyframes nameDrop {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.hero h1 {
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+.hero h2 {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #475569;
+}
+
+.tagline {
+    margin-top: 14px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* =========================
+   BUTTONS (APPLE STYLE)
+========================= */
+.buttons {
+    margin: 30px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 6px;
+    background: linear-gradient(180deg, #3b82f6, #2563eb);
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(37, 99, 235, 0.35);
+}
+
+.btn.outline {
+    background: transparent;
+    border: 1px solid #2563eb;
+    color: #2563eb;
+}
+
+.btn.outline:hover {
+    background: rgba(37, 99, 235, 0.06);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+}
+
+/* =========================
+   CONTACT (APPLE CLEAN)
+========================= */
+
+.contact {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #475569;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.contact-item:hover {
+    color: #2563eb;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    stroke: #2563eb;
+    stroke-width: 1.8;
+    fill: none;
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+.section {
+    max-width: 900px;
+    margin: 70px auto;
+    padding: 0 20px;
+
+    /* 🔥 THIS IS THE FIX */
+    text-align: left;
+}
+
+
+.section:hover {
+    transform: translateY(-2px);
+}
+
+.section h3 {
+    font-size: 22px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #2563eb;
+    display: inline-block;
+    padding-bottom: 6px;
+}
+
+.section p {
+    font-size: 15px;
+    color: #111827;
+    margin-top: 12px;
+}
+
+/* =========================
+   SKILLS (APPLE LIST STYLE)
+========================= */
+.skills {
+    list-style: none;
+    margin-top: 18px;
+}
+
+.skills li {
+    padding: 12px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+    transition:
+        background 0.25s ease,
+        padding-left 0.25s ease;
+}
+
+.skills li:hover {
+    background: #f1f5f9;
+    padding-left: 18px;
+}
+
+/* =========================
+   PROJECT CARDS
+========================= */
+.project {
+    margin-top: 24px;
+    padding: 24px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border 0.3s ease;
+}
+
+.project:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
+    border: 1px solid #2563eb;
+}
+
+.project h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.project p {
+    font-size: 14px;
+    color: #111827;
+}
+
+.project .tech {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #475569;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 12px;
+    color: #64748b;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* =========================
+   MOBILE OPTIMIZATION
+========================= */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero h2 {
+        font-size: 18px;
+    }
+
+    .section {
+        margin: 50px auto;
+    }
+}
