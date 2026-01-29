@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Aditya | DevOps Portfolio</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
@@ -19,10 +20,20 @@
             Linux • Docker • Automation • Python • Databases
         </p>
 
-        <div class="buttons">
-            <a href="resume.pdf" class="btn">Download Resume</a>
+<div class="experience-dropdown">
+
+  <button class="btn">Work Experience ▾</button>
+
+  <div class="dropdown-menu">
+    <a href="#"class="dropdown-item" data-target="umoja-panel">Umoja Marketplace — Data Analyst (2024–Present)</a>
+    <a href="#"class="dropdown-item" data-target="peel-panel">Peel-Works — Data Analyst (2024)</a>
+    <a href="#"class="dropdown-item" data-target="ienergizer-panel">iEnergizer — Customer Success (2022–2023)</a>
+    <a href="#"class="dropdown-item" data-target="br-panel">B&R — Automation Engineer (2021–2022)</a>
+  </div>
+</div>
+</div>
             <a href="#projects" class="btn outline">View Projects</a>
-            <a href="https://github.com/CodenameMadhav" class="btn outline" target="_blank">GitHub</a>
+            <a href="https://github.com/codenameMadhava" class="btn outline" target="_blank">GitHub</a>
         </div>
 
 <div class="contact">
@@ -65,6 +76,92 @@
 </div>
 </div>
     </header>
+    
+<section class="experience-panels">
+
+  <!-- Umoja -->
+  <div class="experience-panel" id="umoja-panel">
+    <h2>Umoja Marketplace Company Private Limited</h2>
+    <h4>Data Analyst • Aug 2024 – Present</h4>
+
+    <ul>
+      <li>Founding data team member; built and managed AWS-based analytics infrastructure for scalable reporting.</li>
+      <li>Developed complex PostgreSQL queries to analyze sales, supply, demand, and operational datasets.</li>
+      <li>Performed data cleaning and analysis using Python (Pandas, NumPy) to ensure data quality and usability.</li>
+      <li>Built Tableau Cloud dashboards for sales performance, demand funnels, and operational KPIs.</li>
+      <li>Integrated data across AWS, Google Cloud SQL, and Google Sheets for near real-time reporting.</li>
+      <li>Automated reports and workflows, improving efficiency while maintaining 95%+ SLA compliance.</li>
+      <li>Partnered with Operations and business teams to translate insights into actionable decisions.</li>
+    </ul>
+
+    <p><strong>Achievements:</strong></p>
+    <ul>
+      <li>Set up scalable IT infrastructure using AWS and open-source tools.</li>
+      <li>Delivered high-impact dashboards for sales, supply, demand, and PG insights.</li>
+      <li>Maintained 95%+ SLA adherence through automation and monitoring.</li>
+    </ul>
+  </div>
+
+  <!-- Peel-Works -->
+  <div class="experience-panel" id="peel-panel">
+    <h2>Peel-Works Private Limited</h2>
+    <h4>Data Analyst • Jun 2024 – Aug 2024</h4>
+
+    <ul>
+      <li>Built SQL-driven Tableau dashboards for GMV, product visibility, and inventory forecasting.</li>
+      <li>Analyzed large structured datasets to uncover regional trends and support purchasing decisions.</li>
+      <li>Designed inventory optimization and loss analysis dashboards using PostgreSQL.</li>
+      <li>Ensured data accuracy through validation, cleaning, and reconciliation.</li>
+    </ul>
+
+    <p><strong>Achievements:</strong></p>
+    <ul>
+      <li>Delivered data-driven dashboards and SQL-powered insights via Tableau Cloud and Taikee.</li>
+      <li>Improved decision-making across inventory, sales, and procurement teams.</li>
+    </ul>
+  </div>
+
+  <!-- iEnergizer -->
+  <div class="experience-panel" id="ienergizer-panel">
+    <h2>iEnergizer</h2>
+    <h4>Customer Success Representative • Jun 2022 – Feb 2023</h4>
+
+    <ul>
+      <li>Managed postpaid customer accounts, resolving billing, service, and plan-related queries.</li>
+      <li>Drove customer retention through effective issue resolution and proactive support.</li>
+      <li>Maintained strict SLA and quality benchmarks while handling high-volume customer interactions.</li>
+      <li>Ensured compliance with internal processes and customer satisfaction standards.</li>
+    </ul>
+
+    <p><strong>Achievements:</strong></p>
+    <ul>
+      <li>Consistently met SLA and quality benchmarks.</li>
+      <li>Maintained high customer satisfaction scores and retention rates.</li>
+    </ul>
+  </div>
+
+  <!-- B&R -->
+  <div class="experience-panel" id="br-panel">
+    <h2>B&R</h2>
+    <h4>Automation Engineer • Dec 2021 – May 2022</h4>
+
+    <ul>
+      <li>Developed Python-based automation solutions for industrial monitoring systems using B&R APROL software.</li>
+      <li>Created real-time visualization dashboards for 128 vibration sensing units.</li>
+      <li>Worked with large time-series datasets for system integration, testing, and validation.</li>
+      <li>Delivered automation solutions for enterprise clients including NTPC, Hero, and Shank.</li>
+      <li>Ensured reliable, compliant, and production-ready automation deployments.</li>
+    </ul>
+
+    <p><strong>Achievements:</strong></p>
+    <ul>
+      <li>Successfully delivered APROL-based monitoring views enabling real-time vibration analysis.</li>
+      <li>Supported condition monitoring and anomaly detection across multiple enterprise systems.</li>
+    </ul>
+  </div>
+
+</section>
+
 
     <!-- ABOUT -->
     <section class="section">
@@ -145,4 +242,20 @@
     </footer>
 
 </body>
+    <script>
+  const items = document.querySelectorAll(".dropdown-item");
+  const panels = document.querySelectorAll(".experience-panel");
+
+  items.forEach(item => {
+    item.addEventListener("click", () => {
+      const targetId = item.getAttribute("data-target");
+
+      panels.forEach(panel => {
+        panel.classList.remove("active");
+      });
+
+      document.getElementById(targetId).classList.add("active");
+    });
+  });
+</script>
 </html>
