@@ -108,6 +108,12 @@ a:hover::after {
     margin: 30px 0;
 }
 
+button.btn {
+    border: none;
+    outline: none;
+    background: linear-gradient(180deg, #3b82f6, #2563eb);
+    font-family: inherit;
+}
 .btn {
     display: inline-block;
     padding: 12px 24px;
@@ -358,4 +364,112 @@ footer {
     margin: 40px 0;
     border: none;
     border-top: 1px solid #e5e7eb;
+}
+/* =========================
+   EXPERIENCE DROPDOWN
+========================= */
+.experience-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.experience-dropdown .btn {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 52px;
+    left: 0;
+    min-width: 340px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: all 0.25s ease;
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #111827;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background: #f8fafc;
+    color: #2563eb;
+}
+
+/* Show on hover */
+.experience-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+/* =========================
+   EXPERIENCE PANELS (APPLE STYLE)
+========================= */
+.experience-panels {
+    width: 100%;
+    background: #000;
+    padding: 60px 80px;
+    display: none;
+}
+
+.experience-panel {
+  display: none;
+}
+
+.experience-panel.active {
+  display: block;
+}
+
+
+
+.experience-panel h2 {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.experience-panel h4 {
+    font-size: 18px;
+    color: #9ca3af;
+    margin-bottom: 24px;
+}
+
+.experience-panel p {
+    font-size: 16px;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+.experience-panel ul li {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* Show panels on hover */
+.dropdown-menu a:hover ~ .experience-panels {
+    display: block;
+}
+
+/* Manual targeting */
+.dropdown-menu a:hover::after {
+    content: attr(data-target);
+    display: none;
 }
