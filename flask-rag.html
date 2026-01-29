@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flask RAG API – Project Description</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<section class="section">
+
+  <h2>Flask RAG API (Dockerized)</h2>
+
+  <p>
+    This project is a <strong>Retrieval-Augmented Generation (RAG)</strong>
+    backend system built using Python and Flask, fully containerized with
+    Docker. The goal of the project is to enable <strong>semantic search</strong>
+    over custom documents instead of relying on keyword-based search or
+    hallucination-prone language models.
+  </p>
+
+  <p>
+    The system converts documents into vector embeddings, stores them in a
+    vector database, and retrieves the most relevant context for a given
+    query using similarity search.
+  </p>
+
+  <hr>
+
+  <h3>Overall Architecture</h3>
+
+  <p>
+    The architecture follows a clean, production-style backend flow:
+  </p>
+
+  <ul>
+    <li>Client sends a query request to a REST API</li>
+    <li>Flask handles the HTTP request and routing</li>
+    <li>Sentence Transformers convert text into embeddings</li>
+    <li>FAISS performs fast vector similarity search</li>
+    <li>Relevant documents are returned as contextual response</li>
+    <li>The entire system runs inside a Docker container</li>
+  </ul>
+
+  <pre>
+Client → Flask API → Embedding Model → FAISS Vector Search → Contextual Answer
+  </pre>
+
+  <hr>
+
+  <h3>Key Libraries & Why They Are Used</h3>
+
+  <h4>1. Flask</h4>
+  <p>
+    Flask is used as a lightweight web framework to expose REST API endpoints.
+    It handles HTTP requests, JSON payloads, routing, and responses.
+  </p>
+  <p>
+    Purpose:
+  </p>
+  <ul>
+    <li>Expose <code>/health</code> endpoint for service monitoring</li>
+    <li>Expose <code>/query</code> endpoint for semantic search</li>
+    <li>Act as the API layer between client and retrieval system</li>
+  </ul>
+
+  <h4>2. Sentence Transformers</h4>
+  <p>
+    Sentence Transformers is used to convert both documents and user queries
+    into dense vector embeddings using a pre-trained transformer model.
+  </p>
+  <p>
+    Purpose:
+  </p>
+  <ul>
+    <li>Transform raw text into numerical vectors</li>
+    <li>Enable semantic understanding instead of keyword matching</li>
+    <li>Use the <code>all-MiniLM-L6-v2</code> model for efficiency</li>
+  </ul>
+
+  <h4>3. FAISS (Facebook AI Similarity Search)</h4>
+  <p>
+    FAISS is used as an in-memory vector database to store document embeddings
+    and perform fast similarity search using L2 distance.
+  </p>
+  <p>
+    Purpose:
+  </p>
+  <ul>
+    <li>Store high-dimensional embeddings efficiently</li>
+    <li>Perform fast nearest-neighbor search</li>
+    <li>Retrieve the most relevant documents for a query</li>
+  </ul>
+
+  <h4>4. NumPy</h4>
+  <p>
+    NumPy is used to handle numerical data and convert embedding outputs into
+    formats compatible with FAISS.
+  </p>
+  <p>
+    Purpose:
+  </p>
+  <ul>
+    <li>Convert embeddings into arrays</li>
+    <li>Enable efficient numerical operations</li>
+  </ul>
+
+  <h4>5. Docker</h4>
+  <p>
+    Docker is used to containerize the entire application, including Python
+    runtime, dependencies, and system libraries.
+  </p>
+  <p>
+    Purpose:
+  </p>
+  <ul>
+    <li>Ensure reproducible builds</li>
+    <li>Eliminate environment dependency issues</li>
+    <li>Enable DevOps-style deployment workflows</li>
+  </ul>
+
+  <hr>
+
+  <h3>Core Code Workflow</h3>
+
+  <h4>Document Loading</h4>
+  <p>
+    Documents are loaded from a text file, cleaned, and converted into
+    embeddings at application startup. These embeddings are indexed using
+    FAISS for fast retrieval.
+  </p>
+
+  <h4>Query Handling</h4>
+  <p>
+    When a user sends a query:
+  </p>
+  <ul>
+    <li>The query text is converted into an embedding</li>
+    <li>FAISS searches for nearest document vectors</li>
+    <li>The top matching documents are returned as context</li>
+  </ul>
+
+  <h4>REST API Design</h4>
+  <p>
+    The API follows simple REST principles using JSON input and output,
+    making it easy to integrate with other systems or frontends.
+  </p>
+
+  <hr>
+
+  <h3>Run Locally</h3>
+
+  <p>
+    The application can be built and run locally using Docker:
+  </p>
+
+  <pre>
+docker build -t flask-rag-api .
+docker run -p 5000:5000 flask-rag-api
+  </pre>
+
+  <p>
+    Once running, the API can be tested using:
+  </p>
+
+  <pre>
+curl -X POST http://localhost:5000/query \
+-H "Content-Type: application/json" \
+-d '{"question":"What is Docker?"}'
+  </pre>
+
+  <hr>
+
+  <h3>Why This Project Matters</h3>
+
+  <ul>
+    <li>Demonstrates real-world backend API design</li>
+    <li>Applies AI concepts in a practical, production-style system</li>
+    <li>Uses Docker for reproducibility and DevOps workflows</li>
+    <li>Bridges Data, Backend Engineering, and DevOps</li>
+  </ul>
+
+  <p>
+    This project showcases hands-on experience in building containerized,
+    AI-powered backend services using modern tools and best practices.
+  </p>
+
+  <p>
+    <a href="../index.html" class="btn">← Back to Portfolio</a>
+  </p>
+
+</section>
+
+</body>
+</html>
