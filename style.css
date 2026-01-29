@@ -290,3 +290,72 @@ footer {
         margin: 50px auto;
     }
 }
+.project-buttons {
+  margin-top: 12px;
+}
+
+.project-buttons a {
+  margin-right: 10px;
+}
+/* =========================
+   FLASK RAG DESCRIPTION PAGE
+========================= */
+
+/* Main title on description page */
+.section h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+/* Sub-headings (Architecture, Features, etc.) */
+.section h3 {
+    font-size: 20px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+}
+
+/* Lists inside description page */
+.section ul {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.section ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #111827;
+}
+
+/* Code blocks (Docker commands, curl) */
+.section pre {
+    margin-top: 16px;
+    padding: 18px 20px;
+    background: #0f172a;
+    color: #e5e7eb;
+    border-radius: 14px;
+    font-size: 13px;
+    overflow-x: auto;
+    border: 1px solid #1e293b;
+}
+
+/* Inline code */
+.section code {
+    background: #e0e7ff;
+    color: #1e3a8a;
+    padding: 3px 6px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+/* Back button spacing */
+.section .btn {
+    margin-top: 24px;
+}
+
+/* Optional card feel for large content blocks */
+.section hr {
+    margin: 40px 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
