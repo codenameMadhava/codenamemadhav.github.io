@@ -1,197 +1,701 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Flask RAG API – Project Description</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flask RAG API • Project</title>
+  <style>
+    /* ===================================
+       FLASK RAG API PROJECT PAGE
+       Using Portfolio Apple-Style Design
+       =================================== */
 
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 
+                   'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      background: #000000;
+      color: #f5f5f7;
+      padding: 80px 40px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(0, 113, 227, 0.15), transparent 50%),
+                  radial-gradient(circle at 70% 50%, rgba(175, 82, 222, 0.15), transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero .subtitle {
+      font-size: 21px;
+      opacity: 0.95;
+      margin-bottom: 32px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      line-height: 1.5;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s backwards;
+    }
+
+    /* ===== BADGES ===== */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 32px 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s backwards;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 15px;
+      color: #ffffff;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .badge:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      margin: 8px;
+      background: #0071e3;
+      color: #ffffff;
+      border: none;
+      border-radius: 980px;
+      font-size: 17px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+    }
+
+    .btn:hover {
+      background: #0077ed;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 113, 227, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 32px 0 24px;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s backwards;
+    }
+
+    .hero-note {
+      font-size: 15px;
+      opacity: 0.85;
+      max-width: 700px;
+      margin: 24px auto 0;
+      line-height: 1.6;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s backwards;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .container {
+      max-width: 1200px;
+      margin: -60px auto 60px;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      margin-bottom: 32px;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: #1d1d1f;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== LISTS ===== */
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      color: #6e6e73;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .list li::before {
+      content: '•';
+      position: absolute;
+      left: 10px;
+      color: #0071e3;
+      font-size: 24px;
+      line-height: 1;
+      top: -2px;
+    }
+
+    /* ===== CODE BLOCKS ===== */
+    .code {
+      background: #1d1d1f;
+      color: #e5e7eb;
+      border-radius: 16px;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 
+                   'Roboto Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+      margin: 16px 0;
+    }
+
+    .code-inline {
+      background: #f5f5f7;
+      color: #0071e3;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: 'SF Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* ===== STEPS ===== */
+    .steps {
+      display: grid;
+      gap: 16px;
+      margin: 24px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #f5f5f7;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .step:hover {
+      background: #ffffff;
+      border-color: #0071e3;
+      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.1);
+      transform: translateX(4px);
+    }
+
+    .num {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 20px;
+      background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+    }
+
+    .step-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1d1d1f;
+      font-size: 17px;
+    }
+
+    /* ===== DIVIDERS ===== */
+    hr {
+      border: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      margin: 32px 0;
+    }
+
+    /* ===== TIP BOX ===== */
+    .tip-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1px solid #93c5fd;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .tip-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .tip-content {
+      color: #1e40af;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1d1d1f;
+      color: #f5f5f7;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+
+    footer p {
+      font-size: 15px;
+      opacity: 0.7;
+      font-weight: 400;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 968px) {
+      .hero {
+        padding: 60px 24px 80px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero .subtitle {
+        font-size: 19px;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .card {
+        padding: 32px 24px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero .subtitle {
+        font-size: 17px;
+      }
+
+      .badges {
+        gap: 8px;
+      }
+
+      .badge {
+        font-size: 13px;
+        padding: 10px 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .num {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+    }
+
+    /* ===== SMOOTH SCROLLING ===== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ===== SELECTION ===== */
+    ::selection {
+      background: #0071e3;
+      color: #ffffff;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f5f5f7;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #d2d2d7;
+      border-radius: 6px;
+      border: 2px solid #f5f5f7;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a1a1a6;
+    }
+  </style>
 </head>
+
 <body>
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Flask RAG API (Dockerized)</h1>
+      <p class="subtitle">
+        Retrieval-Augmented Generation backend • Semantic Search • Vector Embeddings • FAISS • Docker Containerization
+      </p>
 
-<section class="section">
+      <div class="badges">
+        <span class="badge">🔍 Semantic Search</span>
+        <span class="badge">🧠 Vector Embeddings</span>
+        <span class="badge">⚡ FAISS Database</span>
+        <span class="badge">🐳 Docker Ready</span>
+        <span class="badge">🚀 REST API</span>
+      </div>
 
-  <h2>Flask RAG API (Dockerized)</h2>
+      <div class="cta-row">
+        <a href="https://github.com/codenameMadhava/flask-rag-docker" target="_blank" class="btn">View on GitHub</a>
+        <button class="btn secondary" onclick="alert('Demo coming soon!')">Try Demo</button>
+      </div>
 
-  <p>
-    This project is a <strong>Retrieval-Augmented Generation (RAG)</strong>
-    backend system built using Python and Flask, fully containerized with
-    Docker. The goal of the project is to enable <strong>semantic search</strong>
-    over custom documents instead of relying on keyword-based search or
-    hallucination-prone language models.
-  </p>
+      <p class="hero-note">
+        This project enables semantic search over custom documents instead of relying on keyword-based search or hallucination-prone language models.
+      </p>
+    </div>
+  </header>
 
-  <p>
-    The system converts documents into vector embeddings, stores them in a
-    vector database, and retrieves the most relevant context for a given
-    query using similarity search.
-  </p>
+  <!-- MAIN CONTENT -->
+  <main class="container">
 
-  <hr>
+    <!-- PROJECT OVERVIEW -->
+    <section class="card">
+      <h2 class="section-title">Project Overview</h2>
+      <p style="color: #6e6e73; font-size: 17px; line-height: 1.7; margin-bottom: 20px;">
+        This project is a Retrieval-Augmented Generation (RAG) backend system built using Python and Flask, fully containerized with Docker. 
+        The system converts documents into vector embeddings, stores them in a vector database, and retrieves the most relevant context 
+        for a given query using similarity search.
+      </p>
+      <ul class="list">
+        <li>Convert documents into high-dimensional vector embeddings</li>
+        <li>Store embeddings in FAISS vector database for fast retrieval</li>
+        <li>Perform semantic similarity search instead of keyword matching</li>
+        <li>Expose REST API endpoints for integration with other systems</li>
+        <li>Fully containerized with Docker for reproducible deployments</li>
+      </ul>
+    </section>
 
-  <h3>Overall Architecture</h3>
-
-  <p>
-    The architecture follows a clean, production-style backend flow:
-  </p>
-
-  <ul>
-    <li>Client sends a query request to a REST API</li>
-    <li>Flask handles the HTTP request and routing</li>
-    <li>Sentence Transformers convert text into embeddings</li>
-    <li>FAISS performs fast vector similarity search</li>
-    <li>Relevant documents are returned as contextual response</li>
-    <li>The entire system runs inside a Docker container</li>
-  </ul>
-
-  <pre>
+    <!-- OVERALL ARCHITECTURE -->
+    <section class="card">
+      <h2 class="section-title">Overall Architecture</h2>
+      <p style="color: #6e6e73; font-size: 17px; line-height: 1.7; margin-bottom: 20px;">
+        The architecture follows a clean, production-style backend flow:
+      </p>
+      <ul class="list">
+        <li>Client sends a query request to a REST API</li>
+        <li>Flask handles the HTTP request and routing</li>
+        <li>Sentence Transformers convert text into embeddings</li>
+        <li>FAISS performs fast vector similarity search</li>
+        <li>Relevant documents are returned as contextual response</li>
+        <li>The entire system runs inside a Docker container</li>
+      </ul>
+      <div class="code">
 Client → Flask API → Embedding Model → FAISS Vector Search → Contextual Answer
-  </pre>
+      </div>
+    </section>
 
-  <hr>
+    <!-- KEY LIBRARIES -->
+    <section class="card">
+      <h2 class="section-title">Key Libraries & Why They Are Used</h2>
+      
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">1. Flask</h3>
+        <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          Flask is used as a lightweight web framework to expose REST API endpoints. It handles HTTP requests, JSON payloads, 
+          routing, and responses.
+        </p>
+        <ul class="list">
+          <li>Expose <code class="code-inline">/health</code> endpoint for service monitoring</li>
+          <li>Expose <code class="code-inline">/query</code> endpoint for semantic search</li>
+          <li>Act as the API layer between client and retrieval system</li>
+        </ul>
+        <p style="color: #6e6e73; font-size: 15px; line-height: 1.6; margin-top: 12px;">
+          <strong>Purpose:</strong> Lightweight web framework for building REST APIs.
+        </p>
+      </div>
 
-  <h3>Key Libraries & Why They Are Used</h3>
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">2. Sentence Transformers</h3>
+        <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          Sentence Transformers is used to convert both documents and user queries into dense vector embeddings using a pre-trained 
+          transformer model.
+        </p>
+        <ul class="list">
+          <li>Transform raw text into numerical vectors</li>
+          <li>Enable semantic understanding instead of keyword matching</li>
+          <li>Use the <code class="code-inline">all-MiniLM-L6-v2</code> model for efficiency</li>
+        </ul>
+        <p style="color: #6e6e73; font-size: 15px; line-height: 1.6; margin-top: 12px;">
+          <strong>Purpose:</strong> Convert text into semantic embeddings for similarity-based retrieval.
+        </p>
+      </div>
 
-  <h4>1. Flask</h4>
-  <p>
-    Flask is used as a lightweight web framework to expose REST API endpoints.
-    It handles HTTP requests, JSON payloads, routing, and responses.
-  </p>
-  <p>
-    Purpose:
-  </p>
-  <ul>
-    <li>Expose <code>/health</code> endpoint for service monitoring</li>
-    <li>Expose <code>/query</code> endpoint for semantic search</li>
-    <li>Act as the API layer between client and retrieval system</li>
-  </ul>
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">3. FAISS (Facebook AI Similarity Search)</h3>
+        <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          FAISS is used as an in-memory vector database to store document embeddings and perform fast similarity search using L2 distance.
+        </p>
+        <ul class="list">
+          <li>Store high-dimensional embeddings efficiently</li>
+          <li>Perform fast nearest-neighbor search</li>
+          <li>Retrieve the most relevant documents for a query</li>
+        </ul>
+        <p style="color: #6e6e73; font-size: 15px; line-height: 1.6; margin-top: 12px;">
+          <strong>Purpose:</strong> Efficient vector similarity search and storage.
+        </p>
+      </div>
 
-  <h4>2. Sentence Transformers</h4>
-  <p>
-    Sentence Transformers is used to convert both documents and user queries
-    into dense vector embeddings using a pre-trained transformer model.
-  </p>
-  <p>
-    Purpose:
-  </p>
-  <ul>
-    <li>Transform raw text into numerical vectors</li>
-    <li>Enable semantic understanding instead of keyword matching</li>
-    <li>Use the <code>all-MiniLM-L6-v2</code> model for efficiency</li>
-  </ul>
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">4. NumPy</h3>
+        <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          NumPy is used to handle numerical data and convert embedding outputs into formats compatible with FAISS.
+        </p>
+        <ul class="list">
+          <li>Convert embeddings into arrays</li>
+          <li>Enable efficient numerical operations</li>
+        </ul>
+        <p style="color: #6e6e73; font-size: 15px; line-height: 1.6; margin-top: 12px;">
+          <strong>Purpose:</strong> Numerical array operations and data type conversions.
+        </p>
+      </div>
 
-  <h4>3. FAISS (Facebook AI Similarity Search)</h4>
-  <p>
-    FAISS is used as an in-memory vector database to store document embeddings
-    and perform fast similarity search using L2 distance.
-  </p>
-  <p>
-    Purpose:
-  </p>
-  <ul>
-    <li>Store high-dimensional embeddings efficiently</li>
-    <li>Perform fast nearest-neighbor search</li>
-    <li>Retrieve the most relevant documents for a query</li>
-  </ul>
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">5. Docker</h3>
+        <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          Docker is used to containerize the entire application, including Python runtime, dependencies, and system libraries.
+        </p>
+        <ul class="list">
+          <li>Ensure reproducible builds</li>
+          <li>Eliminate environment dependency issues</li>
+          <li>Enable DevOps-style deployment workflows</li>
+        </ul>
+        <p style="color: #6e6e73; font-size: 15px; line-height: 1.6; margin-top: 12px;">
+          <strong>Purpose:</strong> Containerization for consistent, reproducible deployments.
+        </p>
+      </div>
+    </section>
 
-  <h4>4. NumPy</h4>
-  <p>
-    NumPy is used to handle numerical data and convert embedding outputs into
-    formats compatible with FAISS.
-  </p>
-  <p>
-    Purpose:
-  </p>
-  <ul>
-    <li>Convert embeddings into arrays</li>
-    <li>Enable efficient numerical operations</li>
-  </ul>
+    <!-- CORE CODE WORKFLOW -->
+    <section class="card">
+      <h2 class="section-title">Core Code Workflow</h2>
+      
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Document Loading</h3>
+      <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+        Documents are loaded from a text file, cleaned, and converted into embeddings at application startup. These embeddings 
+        are indexed using FAISS for fast retrieval.
+      </p>
 
-  <h4>5. Docker</h4>
-  <p>
-    Docker is used to containerize the entire application, including Python
-    runtime, dependencies, and system libraries.
-  </p>
-  <p>
-    Purpose:
-  </p>
-  <ul>
-    <li>Ensure reproducible builds</li>
-    <li>Eliminate environment dependency issues</li>
-    <li>Enable DevOps-style deployment workflows</li>
-  </ul>
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Query Handling</h3>
+      <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+        When a user sends a query:
+      </p>
+      <ul class="list">
+        <li>The query text is converted into an embedding using Sentence Transformers</li>
+        <li>FAISS searches for nearest document vectors using L2 distance</li>
+        <li>The top K matching documents are retrieved</li>
+        <li>Relevant documents are returned as contextual response</li>
+      </ul>
 
-  <hr>
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">REST API Design</h3>
+      <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+        The API follows simple REST principles using JSON input and output, making it easy to integrate with other systems or frontends.
+      </p>
+      <div class="code">
+GET  /health  # Health check endpoint
+POST /query   # Semantic search endpoint
+              # Input: {"question": "What is Docker?"}
+              # Output: {"results": [...]}
+      </div>
+    </section>
 
-  <h3>Core Code Workflow</h3>
-
-  <h4>Document Loading</h4>
-  <p>
-    Documents are loaded from a text file, cleaned, and converted into
-    embeddings at application startup. These embeddings are indexed using
-    FAISS for fast retrieval.
-  </p>
-
-  <h4>Query Handling</h4>
-  <p>
-    When a user sends a query:
-  </p>
-  <ul>
-    <li>The query text is converted into an embedding</li>
-    <li>FAISS searches for nearest document vectors</li>
-    <li>The top matching documents are returned as context</li>
-  </ul>
-
-  <h4>REST API Design</h4>
-  <p>
-    The API follows simple REST principles using JSON input and output,
-    making it easy to integrate with other systems or frontends.
-  </p>
-
-  <hr>
-
-  <h3>Run Locally</h3>
-
-  <p>
-    The application can be built and run locally using Docker:
-  </p>
-
-  <pre>
+    <!-- RUN LOCALLY -->
+    <section class="card">
+      <h2 class="section-title">Run Locally</h2>
+      <p style="color: #6e6e73; font-size: 17px; line-height: 1.7; margin-bottom: 20px;">
+        The application can be built and run locally using Docker:
+      </p>
+      <div class="code">
 docker build -t flask-rag-api .
 docker run -p 5000:5000 flask-rag-api
-  </pre>
+      </div>
 
-  <p>
-    Once running, the API can be tested using:
-  </p>
-
-  <pre>
+      <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-top: 24px;">
+        Once running, the API can be tested using:
+      </p>
+      <div class="code">
 curl -X POST http://localhost:5000/query \
 -H "Content-Type: application/json" \
 -d '{"question":"What is Docker?"}'
-  </pre>
+      </div>
 
-  <hr>
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div class="tip-content">
+          <strong>Pro Tip:</strong> The system loads documents from a text file at startup. Add your custom documents to enable 
+          semantic search over your own content.
+        </div>
+      </div>
+    </section>
 
-  <h3>Why This Project Matters</h3>
+    <!-- WHY THIS PROJECT MATTERS -->
+    <section class="card">
+      <h2 class="section-title">Why This Project Matters</h2>
+      <ul class="list" style="font-size: 17px;">
+        <li><strong>Demonstrates real-world backend API design</strong> with clean architecture</li>
+        <li><strong>Applies AI concepts</strong> in a practical, production-style system</li>
+        <li><strong>Uses Docker</strong> for reproducibility and DevOps workflows</li>
+        <li><strong>Bridges Data, Backend Engineering, and DevOps</strong> in a single project</li>
+        <li><strong>Implements semantic search</strong> instead of keyword matching</li>
+        <li><strong>Showcases vector database usage</strong> with FAISS for fast retrieval</li>
+      </ul>
+      <p style="color: #6e6e73; font-size: 17px; line-height: 1.7; margin-top: 20px;">
+        This project showcases hands-on experience in building containerized, AI-powered backend services using modern 
+        tools and best practices.
+      </p>
 
-  <ul>
-    <li>Demonstrates real-world backend API design</li>
-    <li>Applies AI concepts in a practical, production-style system</li>
-    <li>Uses Docker for reproducibility and DevOps workflows</li>
-    <li>Bridges Data, Backend Engineering, and DevOps</li>
-  </ul>
+      <div class="tip-box" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac;">
+        <div class="tip-icon">🚀</div>
+        <div class="tip-content" style="color: #166534;">
+          <strong>Skillset Demonstrated:</strong> Python, Flask, Sentence Transformers, FAISS, NumPy, Docker, REST API Design, 
+          Vector Embeddings, Semantic Search, and DevOps Best Practices.
+        </div>
+      </div>
+    </section>
 
-  <p>
-    This project showcases hands-on experience in building containerized,
-    AI-powered backend services using modern tools and best practices.
-  </p>
+  </main>
 
-  <p>
-    <a href="https://codenamemadhava.github.io/" class="btn">
-  ← Back to Portfolio
-</a>
-  </p>
+  <!-- FOOTER -->
+  <footer>
+    <p>Built by Aditya • Flask + RAG + FAISS + Docker • AI-Powered Backend Portfolio</p>
+  </footer>
 
+</body>
+</html>
 </section>
 
 </body>
