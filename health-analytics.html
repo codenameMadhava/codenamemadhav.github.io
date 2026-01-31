@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Health Analytics App • Project</title>
+  <style>
+    /* ===================================
+       HEALTH ANALYTICS PROJECT PAGE
+       Using Portfolio Apple-Style Design
+       =================================== */
+
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 
+                   'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      background: #000000;
+      color: #f5f5f7;
+      padding: 80px 40px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(0, 113, 227, 0.15), transparent 50%),
+                  radial-gradient(circle at 70% 50%, rgba(175, 82, 222, 0.15), transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero .subtitle {
+      font-size: 21px;
+      opacity: 0.95;
+      margin-bottom: 32px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      line-height: 1.5;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s backwards;
+    }
+
+    /* ===== BADGES ===== */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 32px 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s backwards;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 15px;
+      color: #ffffff;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .badge:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      margin: 8px;
+      background: #0071e3;
+      color: #ffffff;
+      border: none;
+      border-radius: 980px;
+      font-size: 17px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+    }
+
+    .btn:hover {
+      background: #0077ed;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 113, 227, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 32px 0 24px;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s backwards;
+    }
+
+    .hero-note {
+      font-size: 15px;
+      opacity: 0.85;
+      max-width: 700px;
+      margin: 24px auto 0;
+      line-height: 1.6;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s backwards;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .container {
+      max-width: 1200px;
+      margin: -60px auto 60px;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      margin-bottom: 32px;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: #1d1d1f;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== LISTS ===== */
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      color: #6e6e73;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .list li::before {
+      content: '•';
+      position: absolute;
+      left: 10px;
+      color: #0071e3;
+      font-size: 24px;
+      line-height: 1;
+      top: -2px;
+    }
+
+    /* ===== CODE BLOCKS ===== */
+    .code {
+      background: #1d1d1f;
+      color: #e5e7eb;
+      border-radius: 16px;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 
+                   'Roboto Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+      margin: 16px 0;
+    }
+
+    .code-inline {
+      background: #f5f5f7;
+      color: #0071e3;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: 'SF Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* ===== STEPS ===== */
+    .steps {
+      display: grid;
+      gap: 16px;
+      margin: 24px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #f5f5f7;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .step:hover {
+      background: #ffffff;
+      border-color: #0071e3;
+      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.1);
+      transform: translateX(4px);
+    }
+
+    .num {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 20px;
+      background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+    }
+
+    .step-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1d1d1f;
+      font-size: 17px;
+    }
+
+    .step-content {
+      color: #6e6e73;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ===== DIVIDERS ===== */
+    hr {
+      border: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      margin: 32px 0;
+    }
+
+    /* ===== TIP BOX ===== */
+    .tip-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1px solid #93c5fd;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .tip-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .tip-content {
+      color: #1e40af;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1d1d1f;
+      color: #f5f5f7;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+
+    footer p {
+      font-size: 15px;
+      opacity: 0.7;
+      font-weight: 400;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 968px) {
+      .hero {
+        padding: 60px 24px 80px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero .subtitle {
+        font-size: 19px;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .card {
+        padding: 32px 24px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero .subtitle {
+        font-size: 17px;
+      }
+
+      .badges {
+        gap: 8px;
+      }
+
+      .badge {
+        font-size: 13px;
+        padding: 10px 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .num {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+    }
+
+    /* ===== SMOOTH SCROLLING ===== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ===== SELECTION ===== */
+    ::selection {
+      background: #0071e3;
+      color: #ffffff;
+    }
+
+    /* ===== FOCUS STYLES ===== */
+    *:focus {
+      outline: 2px solid #0071e3;
+      outline-offset: 2px;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f5f5f7;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #d2d2d7;
+      border-radius: 6px;
+      border: 2px solid #f5f5f7;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a1a1a6;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Health Analytics App</h1>
+      <p class="subtitle">
+        Flask + CSV datasets (Apple Watch, Fitbit, Weka) • Analytics Dashboard • System Monitoring • Docker-ready
+      </p>
+
+      <div class="badges">
+        <span class="badge">📊 CSV Analytics</span>
+        <span class="badge">🧠 Pandas Metrics</span>
+        <span class="badge">🖥️ System Analysis API</span>
+        <span class="badge">🐳 Docker Containerization</span>
+        <span class="badge">⚙️ DevOps Portfolio Project</span>
+      </div>
+
+      <div class="cta-row">
+        <button class="btn" onclick="window.location.href='/dashboard'">Open Dashboard</button>
+        <button class="btn secondary" onclick="window.location.href='/system'">System Analysis</button>
+      </div>
+
+      <p class="hero-note">
+        Objective: demonstrate an end-to-end pipeline — data ingestion → API metrics → UI dashboard → containerized deployment.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+
+    <!-- OVERALL ARCHITECTURE -->
+    <section class="card">
+      <h2 class="section-title">Overall Architecture</h2>
+      <p style="color: #6e6e73; font-size: 17px; line-height: 1.7; margin-bottom: 20px;">
+        The architecture follows a clean separation-style backend flow:
+      </p>
+      <ul class="list">
+        <li>User queries the app via REST API</li>
+        <li>Flask handles the HTTP request and routing</li>
+        <li>Pandas processes CSV data and computes analytics</li>
+        <li>Psutil performs real-time system resource monitoring</li>
+        <li>Computed metrics are returned as JSON/HTML responses</li>
+        <li>Dashboard visualizes data with interactive cards and charts</li>
+      </ul>
+      <div class="code">
+Client → Flask API → Pandas → CSV Data → Metrics → System Monitor → Dashboard UI
+      </div>
+    </section>
+
+    <!-- KEY LIBRARIES -->
+    <section class="card">
+      <h2 class="section-title">Key Libraries & Why They Are Used</h2>
+      
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">1. Flask</h3>
+        <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          Flask is used as a lightweight web framework to expose REST API endpoints. It handles HTTP requests, JSON payloads, 
+          routing, and responses.
+        </p>
+        <ul class="list">
+          <li>Expose <code class="code-inline">/health</code> endpoint for service monitoring</li>
+          <li>Expose <code class="code-inline">/summary</code> endpoint for aggregated stats</li>
+          <li>Expose <code class="code-inline">/devices</code> and <code class="code-inline">/activities</code> for data queries</li>
+          <li>Act as the API layer between client and analytics system</li>
+        </ul>
+        <p style="color: #6e6e73; font-size: 15px; line-height: 1.6; margin-top: 12px;">
+          <strong>Purpose:</strong> Lightweight web framework for building REST APIs and serving HTML templates.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">2. Pandas</h3>
+        <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          Pandas is used for efficient data manipulation and analysis of CSV datasets from Apple Watch, Fitbit, and Weka sources.
+        </p>
+        <ul class="list">
+          <li>Load and parse CSV files efficiently</li>
+          <li>Perform aggregations (mean, sum, min, max)</li>
+          <li>Handle missing data and data type conversions</li>
+          <li>Group and filter health metrics by device type</li>
+          <li>Use the <code class="code-inline">DataFrame</code> model for efficient data processing</li>
+        </ul>
+        <p style="color: #6e6e73; font-size: 15px; line-height: 1.6; margin-top: 12px;">
+          <strong>Purpose:</strong> Data manipulation, aggregation, and statistical analysis of health datasets.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">3. Psutil</h3>
+        <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          Psutil is used for cross-platform system and process monitoring. It provides real-time metrics for CPU, memory, 
+          disk, and network usage.
+        </p>
+        <ul class="list">
+          <li>Monitor CPU usage percentage in real-time</li>
+          <li>Track memory consumption (used/total/percentage)</li>
+          <li>Monitor disk space utilization</li>
+          <li>Retrieve system cache information</li>
+          <li>Perform fast nearest neighbor search</li>
+        </ul>
+        <p style="color: #6e6e73; font-size: 15px; line-height: 1.6; margin-top: 12px;">
+          <strong>Purpose:</strong> Real-time system resource monitoring and performance metrics collection.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px;">4. Docker</h3>
+        <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          Docker is used to containerize the entire application, including Python runtime, dependencies, and system libraries.
+        </p>
+        <ul class="list">
+          <li>Ensure consistent runtime across environments</li>
+          <li>Simplify deployment with single container image</li>
+          <li>Eliminate environment dependency issues</li>
+          <li>Enable DevOps-style deployment workflow</li>
+        </ul>
+        <p style="color: #6e6e73; font-size: 15px; line-height: 1.6; margin-top: 12px;">
+          <strong>Purpose:</strong> Containerization for consistent deployment across development, staging, and production environments.
+        </p>
+      </div>
+    </section>
+
+    <!-- CORE CODE WORKFLOW -->
+    <section class="card">
+      <h2 class="section-title">Core Code Workflow</h2>
+      
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Data Loading</h3>
+      <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+        CSV datasets are loaded from the <code class="code-inline">data/</code> folder, cleaned, and converted into Pandas DataFrames at application startup. 
+        These DataFrames are cached in-memory for fast retrieval.
+      </p>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Metrics Computation</h3>
+      <ul class="list">
+        <li>Data is aggregated using Pandas <code class="code-inline">groupby</code> and <code class="code-inline">agg</code> functions</li>
+        <li>Statistical metrics (mean, sum, min, max) are computed</li>
+        <li>System metrics are collected via psutil in real-time</li>
+        <li>Docker container status is checked using Docker API</li>
+        <li>All computed metrics are returned as JSON responses</li>
+      </ul>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Query Handling</h3>
+      <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+        The query text is converted into an embedding using Sentence Transformers. FAISS searches the nearest document vectors 
+        and retrieves the top K results. The relevant documents are returned as contextual responses.
+      </p>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">REST API Design</h3>
+      <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+        The API follows RESTful conventions with clear endpoint naming and JSON output, making it easy to integrate with 
+        other systems or frontends.
+      </p>
+      <div class="code">
+GET /health          # Health check endpoint
+GET /summary         # Aggregated statistics
+GET /devices         # Device information
+GET /activities      # Activity breakdown
+GET /api/dashboard   # Dashboard metrics
+GET /api/system      # System resource metrics
+      </div>
+    </section>
+
+    <!-- RUN LOCALLY -->
+    <section class="card">
+      <h2 class="section-title">Run Locally</h2>
+      <ol class="steps">
+        <li class="step">
+          <div class="num">1</div>
+          <div>
+            <div class="step-title">Install Dependencies</div>
+            <div class="code">pip install -r requirements.txt</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="num">2</div>
+          <div>
+            <div class="step-title">Start Flask Server</div>
+            <div class="code">python app.py</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="num">3</div>
+          <div>
+            <div class="step-title">Open in Browser</div>
+            <div class="code">http://127.0.0.1:2002/</div>
+          </div>
+        </li>
+      </ol>
+
+      <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-top: 24px;">
+        Once running, the API can be tested using:
+      </p>
+      <div class="code">
+curl -X POST http://localhost:2002/health
+      </div>
+
+      <h2 class="section-title" style="margin-top: 32px;">Run with Docker</h2>
+      <p style="color: #6e6e73; font-size: 16px; line-height: 1.7; margin-bottom: 16px;">
+        The easiest way to run locally using Docker:
+      </p>
+      <div class="code">
+docker build -t health-analytics .
+docker run -p 2002:2002 health-analytics
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div class="tip-content">
+          <strong>Deployment Tip:</strong> After containerizing, you can deploy to cloud platforms like AWS ECS, Elastic Beanstalk, Render, or Railway.
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY THIS PROJECT MATTERS -->
+    <section class="card">
+      <h2 class="section-title">Why This Project Matters</h2>
+      <ul class="list" style="font-size: 17px;">
+        <li><strong>Demonstrates real-world backend API design</strong> with clean separation of concerns</li>
+        <li><strong>Applies data analytics concepts</strong> in a practical, production-style system</li>
+        <li><strong>Showcases DevOps skills</strong> through containerization and deployment readiness</li>
+        <li><strong>Integrates multiple data sources</strong> (Apple Watch, Fitbit, Weka) into unified analytics</li>
+        <li><strong>Implements system monitoring</strong> for production-grade observability</li>
+        <li><strong>Bridges Data, Backend Engineering, and DevOps</strong> in a single project</li>
+      </ul>
+      <p style="color: #6e6e73; font-size: 17px; line-height: 1.7; margin-top: 20px;">
+        This project showcases hands-on experience in building containerized, analytics-powered backend services using modern 
+        tools and best practices. It demonstrates proficiency in <strong>Data Analytics</strong>, <strong>Backend Engineering</strong>, and <strong>DevOps</strong> workflows.
+      </p>
+
+      <div class="tip-box" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac;">
+        <div class="tip-icon">🚀</div>
+        <div class="tip-content" style="color: #166534;">
+          <strong>Skillset Demonstrated:</strong> Python, Flask, Pandas, Psutil, Docker, REST API Design, Data Analytics, System Monitoring, and DevOps Best Practices.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built by Aditya • Flask + Pandas + Docker • Health Analytics + DevOps Portfolio</p>
+  </footer>
+
+</body>
+</html>
