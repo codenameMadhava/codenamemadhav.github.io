@@ -1,475 +1,611 @@
-/* =========================
-   RESET & BASE
-========================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ===================================
+   ADITYA | DEVOPS PORTFOLIO
+   Apple-Style Design
+   =================================== */
 
-html {
-    scroll-behavior: smooth;
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #ffffff;
-    color: #111827;
-    line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 
+               'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* =========================
-   LINKS (APPLE STYLE)
-========================= */
-a {
-    color: #2563eb;
-    text-decoration: none;
-    position: relative;
-}
-
-a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background: #2563eb;
-    transition: width 0.3s ease;
-}
-
-a:hover::after {
-    width: 100%;
-}
-
-/* =========================
-   HERO SECTION
-========================= */
+/* ===== HERO SECTION - Apple Style ===== */
 .hero {
-    padding: 80px 20px 70px;
-    text-align: center;
-    background: linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #f8fafc 100%
-    );
-    border-bottom: 1px solid #e5e7eb;
+  background: #000000;
+  color: #f5f5f7;
+  padding: 100px 40px 120px;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  margin-bottom: 0;
+  padding-bottom: 150px;
 }
 
-/* =========================
-   NAME FALL ANIMATION (ONLY NAME)
-========================= */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(0, 113, 227, 0.15), transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(175, 82, 222, 0.15), transparent 50%);
+  pointer-events: none;
+}
 
-/* =========================
-   NAME DROP ANIMATION (FINAL)
-========================= */
+.hero-name {
+  font-size: 72px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #ffffff 0%, #f5f5f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .name-animate {
-    display: inline-block;
-    animation: nameDrop 1.2s ease-out forwards;
+  display: inline-block;
+  animation: fadeInScale 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Keyframes */
-@keyframes nameDrop {
-    0% {
-        transform: translateY(-30px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-
-.hero h1 {
-    font-size: 44px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .hero h2 {
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: 400;
-    color: #475569;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.01em;
 }
 
 .tagline {
-    margin-top: 14px;
-    font-size: 14px;
-    color: #64748b;
+  font-size: 19px;
+  opacity: 0.7;
+  margin-bottom: 40px;
+  letter-spacing: 0.3px;
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
 }
 
-/* =========================
-   BUTTONS (APPLE STYLE)
-========================= */
-.buttons {
-    margin: 30px 0;
-}
-
-button.btn {
-    border: none;
-    outline: none;
-    background: linear-gradient(180deg, #3b82f6, #2563eb);
-    font-family: inherit;
-}
+/* ===== BUTTONS - Apple Style ===== */
 .btn {
-    display: inline-block;
-    padding: 12px 24px;
-    margin: 6px;
-    background: linear-gradient(180deg, #3b82f6, #2563eb);
-    color: #ffffff;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+  display: inline-block;
+  padding: 14px 32px;
+  margin: 8px;
+  background: #0071e3;
+  color: #ffffff;
+  border: none;
+  border-radius: 980px;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 35px rgba(37, 99, 235, 0.35);
+  background: #0077ed;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 113, 227, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn.outline {
-    background: transparent;
-    border: 1px solid #2563eb;
-    color: #2563eb;
+  background: transparent;
+  color: #0071e3;
+  border: 2px solid #0071e3;
+  box-shadow: none;
 }
 
 .btn.outline:hover {
-    background: rgba(37, 99, 235, 0.06);
-    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+  background: #0071e3;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
 }
 
-/* =========================
-   CONTACT (APPLE CLEAN)
-========================= */
-
-.contact {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    margin-top: 30px;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    color: #475569;
-    white-space: nowrap;
-    transition: color 0.2s ease;
-}
-
-.contact-item:hover {
-    color: #2563eb;
-}
-
-.icon {
-    width: 16px;
-    height: 16px;
-    stroke: #2563eb;
-    stroke-width: 1.8;
-    fill: none;
-    flex-shrink: 0;
-}
-
-
-/* =========================
-   SECTIONS
-========================= */
-.section {
-    max-width: 900px;
-    margin: 70px auto;
-    padding: 0 20px;
-
-    /* 🔥 THIS IS THE FIX */
-    text-align: left;
-}
-
-
-.section:hover {
-    transform: translateY(-2px);
-}
-
-.section h3 {
-    font-size: 22px;
-    margin-bottom: 18px;
-    border-bottom: 2px solid #2563eb;
-    display: inline-block;
-    padding-bottom: 6px;
-}
-
-.section p {
-    font-size: 15px;
-    color: #111827;
-    margin-top: 12px;
-}
-
-/* =========================
-   SKILLS (APPLE LIST STYLE)
-========================= */
-.skills {
-    list-style: none;
-    margin-top: 18px;
-}
-
-.skills li {
-    padding: 12px 10px;
-    border-bottom: 1px solid #e5e7eb;
-    font-size: 14px;
-    transition:
-        background 0.25s ease,
-        padding-left 0.25s ease;
-}
-
-.skills li:hover {
-    background: #f1f5f9;
-    padding-left: 18px;
-}
-
-/* =========================
-   PROJECT CARDS
-========================= */
-.project {
-    margin-top: 24px;
-    padding: 24px;
-    border-radius: 16px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border 0.3s ease;
-}
-
-.project:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
-    border: 1px solid #2563eb;
-}
-
-.project h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.project p {
-    font-size: 14px;
-    color: #111827;
-}
-
-.project .tech {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #475569;
-}
-
-/* =========================
-   FOOTER
-========================= */
-footer {
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 12px;
-    color: #64748b;
-    border-top: 1px solid #e5e7eb;
-}
-
-/* =========================
-   MOBILE OPTIMIZATION
-========================= */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 34px;
-    }
-
-    .hero h2 {
-        font-size: 18px;
-    }
-
-    .section {
-        margin: 50px auto;
-    }
-}
-.project-buttons {
-  margin-top: 12px;
-}
-
-.project-buttons a {
-  margin-right: 10px;
-}
-/* =========================
-   FLASK RAG DESCRIPTION PAGE
-========================= */
-
-/* Main title on description page */
-.section h2 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 18px;
-}
-
-/* Sub-headings (Architecture, Features, etc.) */
-.section h3 {
-    font-size: 20px;
-    margin-top: 32px;
-    margin-bottom: 12px;
-}
-
-/* Lists inside description page */
-.section ul {
-    margin-top: 10px;
-    margin-left: 20px;
-}
-
-.section ul li {
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #111827;
-}
-
-/* Code blocks (Docker commands, curl) */
-.section pre {
-    margin-top: 16px;
-    padding: 18px 20px;
-    background: #0f172a;
-    color: #e5e7eb;
-    border-radius: 14px;
-    font-size: 13px;
-    overflow-x: auto;
-    border: 1px solid #1e293b;
-}
-
-/* Inline code */
-.section code {
-    background: #e0e7ff;
-    color: #1e3a8a;
-    padding: 3px 6px;
-    border-radius: 6px;
-    font-size: 13px;
-}
-
-/* Back button spacing */
-.section .btn {
-    margin-top: 24px;
-}
-
-/* Optional card feel for large content blocks */
-.section hr {
-    margin: 40px 0;
-    border: none;
-    border-top: 1px solid #e5e7eb;
-}
-/* =========================
-   EXPERIENCE DROPDOWN
-========================= */
+/* ===== EXPERIENCE DROPDOWN - Apple Style ===== */
 .experience-dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
+  margin: 24px 8px 8px;
+  z-index: 9999;
 }
 
 .experience-dropdown .btn {
-    cursor: pointer;
+  background: rgba(245, 245, 247, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #f5f5f7;
+  border: 1px solid rgba(245, 245, 247, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+}
+
+.experience-dropdown .btn:hover {
+  background: rgba(245, 245, 247, 0.15);
+  border-color: rgba(245, 245, 247, 0.3);
 }
 
 .dropdown-menu {
-    position: absolute;
-    top: 52px;
-    left: 0;
-    min-width: 340px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+  width: 520px;
+  animation: dropdownSlide 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 10000;
+}
+
+@keyframes dropdownSlide {
+  from {
     opacity: 0;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition: all 0.25s ease;
-    z-index: 1000;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 14px 18px;
-    font-size: 14px;
-    color: #111827;
-    border-bottom: 1px solid #f1f5f9;
-    text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
-.dropdown-menu a:last-child {
-    border-bottom: none;
-}
-
-.dropdown-menu a:hover {
-    background: #f8fafc;
-    color: #2563eb;
-}
-
-/* Show on hover */
-.experience-dropdown:hover .dropdown-menu {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
     opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
+  }
 }
-/* =========================
-   EXPERIENCE PANELS (APPLE STYLE)
-========================= */
+
+/* Show dropdown on hover OR when toggled via JavaScript */
+.experience-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 18px 24px;
+  color: #1d1d1f;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid #e5e5e7;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.dropdown-item:first-child {
+  border-radius: 18px 18px 0 0;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 18px 18px;
+}
+
+.dropdown-item:hover {
+  background: #f5f5f7;
+  padding-left: 28px;
+  color: #0071e3;
+}
+
+/* ===== CONTACT INFO - Apple Style ===== */
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+.contact-item .icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.8;
+}
+
+.contact-item a {
+  color: #f5f5f7;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.contact-item a:hover {
+  opacity: 1;
+}
+
+/* ===== EXPERIENCE PANELS - Apple Style ===== */
 .experience-panels {
-    width: 100%;
-    background: #000;
-    padding: 60px 80px;
-    display: none;
+  max-width: 980px;
+  margin: 60px auto;
+  padding: 0 40px;
 }
 
 .experience-panel {
   display: none;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 48px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  animation: panelFadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
 }
 
 .experience-panel.active {
   display: block;
 }
 
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+/* Close button */
+.panel-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  background: #f5f5f7;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  line-height: 1;
+  color: #6e6e73;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 10;
+  padding: 0;
+}
+
+.panel-close-btn:hover {
+  background: #ff3b30;
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.panel-close-btn:active {
+  transform: scale(0.95);
+  background: #ff2d20;
+}
 
 .experience-panel h2 {
-    font-size: 36px;
-    margin-bottom: 8px;
+  font-size: 32px;
+  color: #1d1d1f;
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding-right: 50px;
 }
 
 .experience-panel h4 {
-    font-size: 18px;
-    color: #9ca3af;
-    margin-bottom: 24px;
+  font-size: 17px;
+  color: #0071e3;
+  margin-bottom: 28px;
+  font-weight: 500;
 }
 
-.experience-panel p {
-    font-size: 16px;
-    max-width: 700px;
-    margin-bottom: 20px;
+.experience-panel ul {
+  list-style: none;
+  margin: 0 0 28px 0;
 }
 
 .experience-panel ul li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 14px;
+  color: #6e6e73;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.experience-panel ul li::before {
+  content: '•';
+  position: absolute;
+  left: 10px;
+  color: #0071e3;
+  font-size: 24px;
+  line-height: 1;
+  top: -2px;
+}
+
+.experience-panel strong {
+  color: #1d1d1f;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+/* ===== SECTIONS - Apple Style ===== */
+.section {
+  max-width: 980px;
+  margin: 60px auto;
+  padding: 48px;
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.section h3 {
+  font-size: 32px;
+  color: #1d1d1f;
+  margin-bottom: 28px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.section p {
+  color: #6e6e73;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ===== SKILLS - Apple Style ===== */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  list-style: none;
+  margin-top: 24px;
+}
+
+.skills li {
+  background: #0071e3;
+  color: #ffffff;
+  padding: 20px 24px;
+  border-radius: 16px;
+  font-weight: 500;
+  font-size: 17px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.25);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skills li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 113, 227, 0.35);
+  background: #0077ed;
+}
+
+/* ===== PROJECTS - Apple Style ===== */
+.project {
+  background: #f5f5f7;
+  border-radius: 20px;
+  padding: 36px;
+  margin-bottom: 28px;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.project h4 {
+  font-size: 24px;
+  color: #1d1d1f;
+  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.project p {
+  color: #6e6e73;
+  margin-bottom: 12px;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.project .tech {
+  font-size: 15px;
+  color: #0071e3;
+  font-weight: 500;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.project-actions .btn {
+  margin: 0;
+  padding: 12px 24px;
+  font-size: 15px;
+  background: #0071e3;
+  color: #ffffff;
+}
+
+.project-actions .btn:hover {
+  background: #0077ed;
+}
+
+/* ===== FOOTER - Apple Style ===== */
+footer {
+  background: #000000;
+  color: #f5f5f7;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 80px;
+}
+
+footer p {
+  font-size: 15px;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 24px 60px;
+  }
+
+  .hero-name {
+    font-size: 48px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+
+  .tagline {
+    font-size: 17px;
+  }
+
+  .contact {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .dropdown-menu {
+    min-width: 300px;
+  }
+
+  .section,
+  .experience-panel {
+    padding: 32px 24px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .section h3,
+  .experience-panel h2 {
+    font-size: 28px;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+  }
+
+  .project {
+    padding: 28px 24px;
+  }
+
+  .project-actions {
+    flex-direction: column;
+  }
+
+  .project-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 40px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+
+  .tagline {
     font-size: 15px;
-    margin-bottom: 10px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  .section p,
+  .project p,
+  .experience-panel ul li {
+    font-size: 15px;
+  }
 }
 
-/* Show panels on hover */
-.dropdown-menu a:hover ~ .experience-panels {
-    display: block;
+/* ===== SMOOTH SCROLLING ===== */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Manual targeting */
-.dropdown-menu a:hover::after {
-    content: attr(data-target);
-    display: none;
+/* ===== SELECTION ===== */
+::selection {
+  background: #0071e3;
+  color: #ffffff;
+}
+
+/* ===== FOCUS STYLES ===== */
+*:focus {
+  outline: 2px solid #0071e3;
+  outline-offset: 2px;
+}
+
+/* ===== SCROLLBAR - Apple Style ===== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d2d2d7;
+  border-radius: 6px;
+  border: 2px solid #f5f5f7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a6;
 }
