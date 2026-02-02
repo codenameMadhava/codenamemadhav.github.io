@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevOps Production App • Project</title>
+  <style>
+    /* ===================================
+       DEVOPS PRODUCTION APP PROJECT PAGE
+       Using Portfolio Apple-Style Design
+       =================================== */
+
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 
+                   'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      background: #000000;
+      color: #f5f5f7;
+      padding: 80px 40px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(0, 113, 227, 0.15), transparent 50%),
+                  radial-gradient(circle at 70% 50%, rgba(16, 185, 129, 0.15), transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero .subtitle {
+      font-size: 21px;
+      opacity: 0.95;
+      margin-bottom: 32px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      line-height: 1.5;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s backwards;
+    }
+
+    /* ===== BADGES ===== */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 32px 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s backwards;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 15px;
+      color: #ffffff;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .badge:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ===== KPI BOXES IN HEADER ===== */
+    .kpi-header {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+      margin: 32px auto;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.25s backwards;
+    }
+
+    .kpi-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: left;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .kpi-box:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .kpi-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .kpi-value {
+      font-size: 16px;
+      color: #ffffff;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .kpi-value .highlight {
+      color: #10b981;
+      font-weight: 700;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      margin: 8px;
+      background: #0071e3;
+      color: #ffffff;
+      border: none;
+      border-radius: 980px;
+      font-size: 17px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+    }
+
+    .btn:hover {
+      background: #0077ed;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 113, 227, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 32px 0 24px;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s backwards;
+    }
+
+    .hero-note {
+      font-size: 15px;
+      opacity: 0.85;
+      max-width: 700px;
+      margin: 24px auto 0;
+      line-height: 1.6;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s backwards;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .container {
+      max-width: 1200px;
+      margin: -60px auto 60px;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      margin-bottom: 32px;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: #1d1d1f;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== LISTS ===== */
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      color: #6e6e73;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .list li::before {
+      content: '•';
+      position: absolute;
+      left: 10px;
+      color: #0071e3;
+      font-size: 24px;
+      line-height: 1;
+      top: -2px;
+    }
+
+    /* ===== CODE BLOCKS ===== */
+    .code {
+      background: #1d1d1f;
+      color: #e5e7eb;
+      border-radius: 16px;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 
+                   'Roboto Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+      margin: 16px 0;
+    }
+
+    .code-inline {
+      background: #f5f5f7;
+      color: #0071e3;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: 'SF Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* ===== TECH PILLS ===== */
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .pill {
+      padding: 10px 18px;
+      background: #f5f5f7;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 100px;
+      font-size: 14px;
+      color: #1d1d1f;
+      font-weight: 500;
+      font-family: 'SF Mono', monospace;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .pill:hover {
+      background: #e8e8ed;
+      border-color: #0071e3;
+      transform: translateY(-2px);
+    }
+
+    /* ===== DIVIDERS ===== */
+    hr {
+      border: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      margin: 32px 0;
+    }
+
+    /* ===== TIP BOX ===== */
+    .tip-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1px solid #93c5fd;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .tip-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .tip-content {
+      color: #1e40af;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ===== WARN BOX ===== */
+    .warn-box {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 1px solid #fbbf24;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .warn-content {
+      color: #92400e;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ===== SUCCESS BOX ===== */
+    .success-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 1px solid #86efac;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .success-content {
+      color: #166534;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ===== KPI BOXES IN CONTENT ===== */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .kpi-card {
+      background: #f5f5f7;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .kpi-card:hover {
+      background: #ffffff;
+      border-color: #0071e3;
+      box-shadow: 0 4px 16px rgba(0, 113, 227, 0.1);
+    }
+
+    .kpi-card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #6e6e73;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .kpi-card-value {
+      font-size: 15px;
+      color: #1d1d1f;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .kpi-card-value .good {
+      color: #10b981;
+      font-weight: 700;
+    }
+
+    .kpi-card-value .warn {
+      color: #f59e0b;
+      font-weight: 700;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1d1d1f;
+      color: #f5f5f7;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+
+    footer p {
+      font-size: 15px;
+      opacity: 0.7;
+      font-weight: 400;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 968px) {
+      .hero {
+        padding: 60px 24px 80px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero .subtitle {
+        font-size: 19px;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .card {
+        padding: 32px 24px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .kpi-header {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero .subtitle {
+        font-size: 17px;
+      }
+
+      .badges {
+        gap: 8px;
+      }
+
+      .badge {
+        font-size: 13px;
+        padding: 10px 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+    }
+
+    /* ===== SMOOTH SCROLLING ===== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ===== SELECTION ===== */
+    ::selection {
+      background: #0071e3;
+      color: #ffffff;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f5f5f7;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #d2d2d7;
+      border-radius: 6px;
+      border: 2px solid #f5f5f7;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a1a1a6;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>DevOps Production App</h1>
+      <p class="subtitle">
+        A production-style <strong>Dockerized Flask</strong> service that demonstrates core DevOps practices: 
+        containerization, environment-based configuration, deployment automation, logging, health checks, 
+        and real-world debugging (ports, builds, and runtime).
+      </p>
+
+      <div class="kpi-header">
+        <div class="kpi-box">
+          <div class="kpi-label">Primary Goal</div>
+          <div class="kpi-value">Show I can <span class="highlight">deploy & operate</span> a service</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Runs On</div>
+          <div class="kpi-value">Local environment (Docker Engine)</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Access</div>
+          <div class="kpi-value">
+            Host Port: <span class="highlight">20260</span> → Container Port: <span class="highlight">2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge">🐳 Containerization</span>
+        <span class="badge">⚙️ Config Management</span>
+        <span class="badge">🚀 Deployment</span>
+        <span class="badge">📊 Health Monitoring</span>
+        <span class="badge">🔧 Operations</span>
+      </div>
+
+      <div class="cta-row">
+        <a href="#" class="btn">Deploy Service</a>
+        <button class="btn secondary" onclick="alert('View logs in terminal')">View Logs</button>
+      </div>
+
+      <p class="hero-note">
+        Objective: demonstrate an end-to-end project — containerization → deployment → operations — with real debugging experience.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+
+    <!-- PROJECT OVERVIEW -->
+    <section class="card">
+      <h2 class="section-title">What this project does</h2>
+      <ul class="list">
+        <li>Runs a minimal Flask API service with a <code class="code-inline">/</code> route and <code class="code-inline">/health</code> endpoint</li>
+        <li>Packages the app into a Docker image (repeatable, portable runtime)</li>
+        <li>Deploys the image as a container using Docker Compose</li>
+        <li>Injects configuration using <code class="code-inline">.env</code> (no hardcoding config in code)</li>
+        <li>Exposes the service via host port mapping and verifies with <code class="code-inline">curl</code></li>
+      </ul>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Tech Stack</h3>
+      <div class="tech-pills">
+        <span class="pill">Python</span>
+        <span class="pill">Flask</span>
+        <span class="pill">Docker</span>
+        <span class="pill">Docker Compose</span>
+        <span class="pill">Shell Script</span>
+      </div>
+    </section>
+
+    <!-- WHY THIS MATTERS -->
+    <section class="card">
+      <h2 class="section-title">Why this matters (DevOps angle)</h2>
+      <ul class="list">
+        <li><strong>Containerization:</strong> same runtime everywhere (local → server)</li>
+        <li><strong>Operational docs:</strong> run, logs, restart, and debug steps</li>
+        <li><strong>Health checks:</strong> supports monitoring / orchestration checks</li>
+        <li><strong>Failure handling:</strong> learned to debug port mismatches and build errors</li>
+      </ul>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Key learning</h3>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-card-label">Common issue faced</div>
+          <div class="kpi-card-value"><span class="warn">Port mismatch</span> (host vs container)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card-label">How I solved it</div>
+          <div class="kpi-card-value">Verified mapping with <code class="code-inline">docker ps</code> and corrected curl target</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="card">
+      <h2 class="section-title">Architecture (simple)</h2>
+      <p style="color: #6e6e73; font-size: 17px; line-height: 1.7; margin-bottom: 20px;">
+        The architecture follows a clean containerized deployment flow:
+      </p>
+      <div class="code">Browser / curl
+   |
+   |  http://localhost:20260
+   v
+Host Port 20260
+   |
+   |  Docker port mapping
+   v
+Container Port 2026
+   |
+   v
+Flask app (python app.py) listening on 0.0.0.0:2026</div>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Port mapping rule</h3>
+      <div class="code">HOST_PORT : CONTAINER_PORT
+20260     : 2026</div>
+    </section>
+
+    <!-- PROJECT STRUCTURE -->
+    <section class="card">
+      <h2 class="section-title">Project structure</h2>
+      <div class="code">devops-production-app/
+├── app/
+│   ├── app.py
+│   └── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+├── .env
+├── deploy.sh
+└── README.md</div>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">What each file is for</h3>
+      <ul class="list">
+        <li><code class="code-inline">Dockerfile</code>: how to build the image</li>
+        <li><code class="code-inline">docker-compose.yml</code>: how to run the service (ports, env, restart policy)</li>
+        <li><code class="code-inline">.env</code>: environment config (example: <code class="code-inline">ENV=production</code>)</li>
+        <li><code class="code-inline">deploy.sh</code>: one-command deployment (build + run)</li>
+      </ul>
+    </section>
+
+    <!-- HOW TO RUN -->
+    <section class="card">
+      <h2 class="section-title">How to run</h2>
+      <p style="color: #6e6e73; font-size: 17px; line-height: 1.7; margin-bottom: 20px;">
+        Deploy the application using the deployment script:
+      </p>
+      <div class="code"># from project root
+chmod +x deploy.sh
+./deploy.sh</div>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">How to verify</h3>
+      <div class="code">curl http://localhost:20260
+curl http://localhost:20260/health</div>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Expected response</h3>
+      <div class="code">{
+  "environment": "production",
+  "service": "devops-production-app",
+  "status": "running"
+}</div>
+
+      <div class="success-box">
+        <div class="tip-icon">✅</div>
+        <div class="success-content">
+          <strong>Success:</strong> The service is now running and accessible at <code class="code-inline">http://localhost:20260</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPERATIONS -->
+    <section class="card">
+      <h2 class="section-title">Operations: logs, restart, debug</h2>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin-bottom: 16px;">Check running containers</h3>
+      <div class="code">docker ps</div>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">View logs</h3>
+      <div class="code">docker logs devops-production-app-web-1</div>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">Restart service</h3>
+      <div class="code">docker-compose restart</div>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 24px 0 16px;">If it does not start (debug checklist)</h3>
+      <div class="code">1) docker ps -a
+2) docker logs &lt;container&gt;
+3) docker inspect &lt;container&gt; | grep -i port
+4) confirm HOST_PORT:CONTAINER_PORT mapping
+5) verify app listens on correct port inside container</div>
+
+      <div class="warn-box">
+        <div class="tip-icon">⚠️</div>
+        <div class="warn-content">
+          <strong>Common Issue:</strong> Port mismatch errors occur when the host port differs from the container port. 
+          Always verify the mapping with <code class="code-inline">docker ps</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT I WOULD IMPROVE -->
+    <section class="card">
+      <h2 class="section-title">What I would improve next</h2>
+      <ul class="list" style="font-size: 17px;">
+        <li>Add CI/CD (GitHub Actions) to build & deploy automatically on push</li>
+        <li>Add a reverse proxy (Nginx) and structured logging</li>
+        <li>Add monitoring hooks (metrics endpoint) and alerting basics</li>
+        <li>Deploy the same container to a VM (AWS EC2) to simulate production</li>
+      </ul>
+
+      <h3 style="font-size: 20px; font-weight: 700; color: #1d1d1f; margin: 32px 0 16px;">Portfolio links</h3>
+      <ul class="list">
+        <li>GitHub Repo: <a href="#" style="color: #0071e3; text-decoration: none; font-weight: 500;">Add your repo URL</a></li>
+        <li>LinkedIn: <a href="#" style="color: #0071e3; text-decoration: none; font-weight: 500;">Add your LinkedIn URL</a></li>
+      </ul>
+
+      <div class="tip-box" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac; margin-top: 24px;">
+        <div class="tip-icon">🚀</div>
+        <div class="success-content">
+          <strong>Skillset Demonstrated:</strong> Python, Flask, Docker, Docker Compose, Shell Scripting, Port Mapping, 
+          Health Checks, Debugging, Environment Configuration, and DevOps Best Practices.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built to demonstrate DevOps deployment & operations skills • Minimal app logic by design</p>
+  </footer>
+
+</body>
+</html>
